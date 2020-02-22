@@ -1,1 +1,0 @@
-1. need to validate user input, empty space and tags
