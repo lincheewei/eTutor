@@ -36,7 +36,7 @@
                                             <tr>
                                                 <td align="center">' . $displayDocData["User_Email"] . '</td>
                                                 <td align="center">' . $displayDocData["Doc_Title"] . '</td>
-                                                <td align="center"><a href="Download_File.php?id='.$displayDocData["Doc_ID"].'" class="btn btn-info">Download</a></td>
+                                                <td align="center"><a href="Download_File.php?id=122'.$displayDocData["Doc_ID"].'" class="btn btn-info" target="_blank">Download</a></td>
                                                 <td align="center"><a href="Document_Forum.php?id='.$displayDocData["Doc_ID"].'" class="btn btn-info">Comment</a></td>
                                             </tr>
                                             ';

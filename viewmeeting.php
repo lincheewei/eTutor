@@ -26,6 +26,7 @@
                                     <th>Start</th>
                                     <th>End</th>
                                     <th>Record</th>
+                                    <th>Recipient</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                         $meetingstart = $row['meeting_start'];
                                         $meetingend = $row['meeting_end'];
                                         $meetingrecord = $row['meeting_record'];
+                                        $recipient = $row['recipient_email'];
 
                                         echo "<tr>";
                                         echo "<td>$meetingid</td>";
@@ -49,6 +51,7 @@
                                         echo "<td>$meetingstart</td>";
                                         echo "<td>$meetingend</td>";
                                         echo "<td>$meetingrecord</td>";
+                                        echo "<td>$recipient</td>";
                                         echo "<td><button type='submit' name='edit' id='edit' value='$meetingid' class='btn btn-primary btn-block'>Edit</button></td>";
                                     }
                                 ?>
@@ -69,6 +72,7 @@
                                     <td>Start</td>
                                     <td>End</td>
                                     <td>Record</td>
+                                    <td>Recipient</td>
                                     <td>Edit</td>
                                 </tr>
                             </tfoot>

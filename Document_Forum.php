@@ -2,6 +2,10 @@
     include "session.php";
     require "utility.php";
     include "upload_config.php";
+
+    if (!filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+        header("Location: Document_Title.php");
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +17,7 @@
             <div class="row pt-3">
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <?php
-                        if (isset($_GET['id'])) {
+                        if (!empty($_GET['id'])) {
                             $id = (int)$_GET['id'];
 
                             $fetch_doc_data_sql = "SELECT * FROM docdb WHERE Doc_ID = '" . $id . "'";
@@ -22,6 +26,17 @@
 
                             echo "<h3> Document Title - " . $display_doc_data['Doc_Title'] . "</h3>";
                             echo "<hr />";
+                        }
+                    ?>
+                    <?php
+                        if(!empty($errorMessages)){
+                            if(count($errorMessages) >0){
+                                echo "<div class='alert alert-danger'>";                           
+                                foreach($errorMessages as $value){
+                                    echo "<li>" . $value . "</li>";
+                                }
+                                echo "</div>";
+                            }
                         }
                     ?>
                     <?php

@@ -3,6 +3,9 @@
     include "upload_config.php";
 
     if (isset($_GET['id'])) {
+        if (!filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+            header("Location: Document_Title.php");
+        } 
         $id = (int)$_GET['id'];
 
         $fetch_doc_data_sql = "SELECT * FROM docdb WHERE Doc_ID = '" . $id . "'";
@@ -25,5 +28,7 @@
             flush();
             readfile($filename);
             exit;
+        } else {            
+            die("Invalid file ID. File not exist");
         }
     }

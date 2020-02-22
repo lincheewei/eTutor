@@ -13,6 +13,17 @@
         <main class="container">
             <div class="row pt-3">
                 <div class="col-md-12 col-xs-12 col-sm-12">
+                    <?php
+                        if(!empty($errorMessages)){
+                            if(count($errorMessages) >0){
+                                echo "<div class='alert alert-danger'>";                           
+                                foreach($errorMessages as $value){
+                                    echo "<li>" . $value . "</li>";
+                                }
+                                echo "</div>";
+                            }
+                        }
+                    ?>
                     <form action="Upload_Document.php" method="post" autocomplete="off" enctype="multipart/form-data">
                         <h3 class="text-center">Upload Document</h3>
                         <hr />
@@ -26,7 +37,7 @@
                             <small id="emailHelp" class="form-text text-muted">Accept .docx or .pdf only.</small>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" name="UploadBTN">Submit</button>
+                            <button type="submit" class="btn btn-primary float-right" name="UploadBTN">Submit</button>
                         </div>
                     </form>
                 </div>
