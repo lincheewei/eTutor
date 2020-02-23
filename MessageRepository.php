@@ -53,11 +53,11 @@
             }
         }
 
-        public function getMessage($senderEmail, $recipientEmail, $offset = 0, $limit = 80){
+        public function getMessage($senderEmail, $recipientEmail){
             $result = array();
             $stmt = mysqli_stmt_init($this->databaseConnection);
-            if(mysqli_stmt_prepare($stmt, "SELECT Id, SenderEmail, RecipientEmail, Message, DateSend FROM messages WHERE SenderEmail IN (?, ?) AND RecipientEmail IN (?, ?) AND IsRecalled = 0 ORDER BY DateSend ASC LIMIT ? OFFSET ?")){
-                mysqli_stmt_bind_param($stmt, "ssssdd", $senderEmail, $recipientEmail, $senderEmail, $recipientEmail, $limit, $offset);
+            if(mysqli_stmt_prepare($stmt, "SELECT Id, SenderEmail, RecipientEmail, Message, DateSend FROM messages WHERE SenderEmail IN (?, ?) AND RecipientEmail IN (?, ?) AND IsRecalled = 0 ORDER BY DateSend ASC")){
+                mysqli_stmt_bind_param($stmt, "ssss", $senderEmail, $recipientEmail, $senderEmail, $recipientEmail);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 mysqli_stmt_bind_result($stmt, $id, $senderEmail, $recipientEmail, $message, $dateSend);
@@ -137,9 +137,13 @@
                 if(mysqli_stmt_num_rows($stmt) > 0){
                     mysqli_stmt_bind_result($stmt, $recipientEmail, $dateSend, $totalMessage);
                     while(mysqli_stmt_fetch($stmt)){
-                        $result[$recipientEmail] = array(
-                            $dateSend => $totalMessage
-                        );
+                        if(array_key_exists($recipientEmail, $result)) {
+                            $result[$recipientEmail][$dateSend] = $totalMessage; 
+                        } else {
+                            $result[$recipientEmail] = array(
+                                $dateSend => $totalMessage
+                            );
+                        }
                     }                    
                 }
                 mysqli_stmt_close($stmt);

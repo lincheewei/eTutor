@@ -3,6 +3,8 @@
     require "utility.php";
     require "AssignRepository.php";
 
+    checkEntity(array("admin"));
+
     if(!empty($_POST['submit'])){
         switch($_POST['submit']) {
             case 'Assign':

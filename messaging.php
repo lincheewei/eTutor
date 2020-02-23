@@ -3,6 +3,8 @@
     require "utility.php";
     require "MessageRepository.php";
 
+    checkEntity(array("student", "tutor"));
+
     if(!empty($_GET['submit'])) {
         if($_GET['submit'] === 'Delete') {            
             try {
@@ -76,7 +78,7 @@
                                             if($value['senderEmail'] === getUserEmail()){
                                                 $message = str_replace("<", "&lt", $value['message']);
                                                 $message = str_replace(">", "&gt", $message);
-                                                echo "<div><p class='mr-4 text-right p-3 bg-success wrap-text' style='margin-left : 120px'><a id='deleteLink' href='" . $_SERVER['PHP_SELF'] . "?submit=Delete&id=" . $value['id'] . "&recipient=" . $_POST['recipient'] . "'><span style='font-size:10px; float:left;background-color:white;padding: 5px'>&#10006;</span></a>" . $message . "</p></div>";
+                                                echo "<div><p class='mr-4 text-right p-3 bg-success wrap-text' style='margin-left : 120px'><a class='deleteLink' href='" . $_SERVER['PHP_SELF'] . "?submit=Delete&id=" . $value['id'] . "&recipient=" . $_POST['recipient'] . "'><span style='font-size:10px; float:left;background-color:white;padding: 5px'>&#10006;</span></a>" . $message . "</p></div>";
                                             } else {
                                                 $message = str_replace("<", "&lt", $value['message']);
                                                 $message = str_replace(">", "&gt", $message);
@@ -115,6 +117,7 @@
 
                                             case 'student':
                                                 $recipient = $assignRepo->getTutor(getUserEmail());
+                                                print_r($recipient);
                                                 break;
 
                                             default:
@@ -143,7 +146,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" style="height:120px;resize:none" required maxlength="500" /></textarea>
+                            <textarea id="message" name="message" class="form-control" style="height:120px;resize:none" required maxlength="500"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-block" name="submit" value="Send" />
@@ -202,8 +205,9 @@
                         console.log(div);
                     }
 
-                    $("a").click(
-                        function() {                            
+                    $(".deleteLink").click(
+                        function(event) {                            
+                            event.preventDefault();
                             if(confirm("Confirm deleting message? It is irreversible.")){
                                 return true;
                             } else {

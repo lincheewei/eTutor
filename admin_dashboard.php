@@ -5,6 +5,9 @@
     require "UserRepository.php";
     require "AssignRepository.php";
     require "MessageRepository.php";
+    require "MeetingRepository.php";
+
+    checkEntity(array("admin"));
 
     if(!empty($_POST['submit'])){
         if($_POST['submit'] === 'Search'){
@@ -32,14 +35,11 @@
         $message7 = $messageRepo->getMessageSentLast7($students);
         $message28 = $messageRepo->getMessageSentLast28($students);
         $messageTotal7 = $messageRepo->getMessageSentLast7($tutors);
-        echo "<pre>";
-        print_r($message7);
-        print_r($message28);
-        print_r($students);
-        print_r($tutors);
-        echo "</pre>";
 
-        $assignRepo = new AssignRepository();
+        $meetingRepo = new MeetingRepository();
+        $meeting7 = $meetingRepo->getMeetingLast7($students);
+        $meeting28 = $meetingRepo->getMeetingLast28($students);
+
         $userRepo = new UserRepository();
         $studentNoTutor = $userRepo->getStudentWithoutTutor($students);
     }
@@ -101,6 +101,9 @@
                                                 foreach($messageTotal7 as $key => $value) {
                                                     echo "<li>" . $key . " has " . $value . " message(s) in total.</li>";
                                                 }
+                                                echo "</ul>";
+                                            } else {
+                                                echo "<ul><li>No tutor available.</li></ul>";
                                             }
                                         }
                                     ?>    
@@ -128,15 +131,60 @@
                                                 foreach($studentNoTutor as $value) {
                                                     echo "<li>" . $value['email'] . "</li>";
                                                 }
+                                                echo "</ul>";
+                                            } else {
+                                                echo "<ul><li>No student matched.</li></ul>";
                                             }
                                         }
                                     ?>    
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <h5>Student do not interact with tutors for 7 days</h5>
+                                    <?php
+                                        if(!empty($students)){
+                                            echo "<ul>";
+                                            $count7 = 0;
+                                            foreach($students as $value){
+                                                if(!array_key_exists($value, $message7) && !array_key_exists($value, $meeting7)){
+                                                    $count7++;
+                                                    echo "<li>" . $value . "</li>";
+                                                } else if(array_key_exists($value, $message7) && array_key_exists($value, $meeting7)) {
+                                                    if($message7[$value] === 0 && $meeting7[$value] === 0){
+                                                        $count7++;
+                                                        echo "<li>" . $value . "</li>";
+                                                    } 
+                                                }
+                                            }
+                                            if($count7 === 0){
+                                                echo "<li>No student matched.</li>";
+                                            }
+                                            echo "</ul>";
+                                        } 
+                                    ?>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <h5>Student do not interact with tutors for 28 days</h5>
+                                    <?php
+                                        if(!empty($students)){
+                                            echo "<ul>";
+                                            $count28 = 0;
+                                            foreach($students as $value){
+                                                if(!array_key_exists($value, $message28) && !array_key_exists($value, $meeting28)){
+                                                    $count28++;
+                                                    echo "<li>" . $value . "</li>";
+                                                } else if(array_key_exists($value, $message28) && array_key_exists($value, $meeting28)) {
+                                                    if($message28[$value] === 0 && $meeting28[$value] === 0){
+                                                        $count28++;
+                                                        echo "<li>" . $value . "</li>";
+                                                    } 
+                                                }
+                                            }
+                                            if($count28 === 0){
+                                                echo "<li>No student matched.</li>";
+                                            }
+                                            echo "</ul>";
+                                        } 
+                                    ?>
                                 </div>
                             </div>
                         </div>

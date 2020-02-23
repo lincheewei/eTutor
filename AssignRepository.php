@@ -182,7 +182,7 @@
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 $result = array();
-                if(mysqli_stmt_num_rows($stmt) > 1) {                
+                if(mysqli_stmt_num_rows($stmt) > 0) {                
                     mysqli_stmt_bind_result($stmt, $tutorEmail);
                     while(mysqli_stmt_fetch($stmt)){
                         $result[] = $tutorEmail;

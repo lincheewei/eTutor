@@ -3,12 +3,20 @@
     require_once "utility.php";
     require_once "AssignRepository.php";
 
+    checkEntity(array("tutor", "admin"));
+
     try {
         $email = getUserEmail();
 
         if(getUserEntity() === 'admin'){
             if(!empty($_GET['tutor'])){
-                $email = $_GET['tutor'];
+                if (filter_var(filter_var($_GET['tutor'], FILTER_SANITIZE_EMAIL), FILTER_VALIDATE_EMAIL)) {
+                    $email = $_GET['tutor'];
+                } else {
+                    throw new Exception("Invalid email.");
+                }                        
+            } else {
+                throw new Exception("Invalid email.");
             }
         }
 
@@ -16,7 +24,7 @@
         $student = $assignRepo->getStudent($email);       
     }
     catch(Exception $ex){
-        echo $ex->getMessage();
+        $errorMessage = $ex->getMessage();
     }
 ?>
 
@@ -43,12 +51,18 @@
                         </thead>
                         <tbody>
                             <?php
-                                if(count($student) > 0){
-                                    foreach($student as $value){
-                                        echo "<tr>";
-                                        echo "<td>" . $value['email'] . "</td>";
-                                        echo "<td>" . $value['name'] . "</td>";
-                                        echo "</tr>";
+                                if(!empty($errorMessage)){
+                                    echo "<div class='alert alert-danger'>" . $errorMessage . "</div>";
+                                } else {
+                                    if(count($student) > 0){
+                                        foreach($student as $value){
+                                            echo "<tr>";
+                                            echo "<td>" . $value['email'] . "</td>";
+                                            echo "<td>" . $value['name'] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<div class='alert alert-info'>You currently do not have any tutees.</div>";
                                     }
                                 }
                             ?>

@@ -2,12 +2,12 @@
     require "utility.php";
     require "UserRepositoryInterface.php";
     require "UserRepository.php";
+    require "session.php";
+
+    checkEntity();
 
     if(!empty($_POST['submit'])){
         if($_POST['submit'] === 'Login'){
-            if(session_status() === PHP_SESSION_NONE){
-                session_start();             
-            }
             try {
                 if(empty(trim($_POST['password']))) {
                     throw new Exception("Password is invalid.");
@@ -24,7 +24,6 @@
                 $_SESSION['Entity'] = $userDetail['entity'];
                 $_SESSION['Name'] = $userDetail['name'];
 
-                require "session.php";
                 checkEntity();
             }
             catch(Exception $ex){

@@ -5,27 +5,28 @@
         session_start();
     }    
 
-    if(empty($_SESSION['Id'])){
-        $_SESSION['Id'] = 1;
-    } 
+    //if(empty($_SESSION['Id'])){
+    //    $_SESSION['Id'] = 1;
+    //} 
 
-    if(empty($_SESSION['Name'])){
-        $_SESSION['Name'] = "user1";
-    } 
+    //if(empty($_SESSION['Name'])){
+    //    $_SESSION['Name'] = "user1";
+    //} 
 
-    if(empty($_SESSION['Email'])){
-        $_SESSION['Email'] = "student1@gmail.com";
-    } 
+    //if(empty($_SESSION['Email'])){
+    //    $_SESSION['Email'] = "student1@gmail.com";
+    //} 
 
-    # possible value of entity
-    # student, tutor, admin
-    if(empty($_SESSION['Entity'])){
-        $_SESSION['Entity'] = "admin";
-    }
+    //# possible value of entity
+    //# student, tutor, admin
+    //if(empty($_SESSION['Entity'])){
+    //    $_SESSION['Entity'] = "admin";
+    //}
     
     function checkEntity($entity = array()) {
         if(!empty($_SESSION['Entity'])){
-            if(!in_array($_SESSION, $entity)){
+            if(!in_array($_SESSION['Entity'], $entity)){
+                echo "Hi";
                 switch($_SESSION['Entity']) {
                     case 'student':
                         header("Location: student_dashboard.php");
@@ -45,7 +46,9 @@
                 }
             } 
         } else {
-            header("Location: index.php");
+            if($_SERVER['PHP_SELF'] !== "/etutor/index.php"){
+                header("Location: index.php");
+            }
         }
     }
 

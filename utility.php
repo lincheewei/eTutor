@@ -52,25 +52,18 @@
                 case "tutor":
                     echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
                     echo "<div class='container'>";
-                    echo '<a class="navbar-brand" href="#">eTutor</a>';
+                    echo '<a class="navbar-brand" href="index.php">eTutor</a>';
                     echo '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                     echo '<span class="navbar-toggler-icon"></span>';
                     echo '</button>';
                         
                     echo '<ul class="navbar-nav mr-auto">';		
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="tutor_dashboard.php">Dashboard</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="#">Blogging</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Material Discussion</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Messaging</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Meeting</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="Document_Title.php">Material Discussion</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="messaging.php">Messaging</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="viewmeeting.php">Meeting</a></li>';
 
-                    //echo '<li class="nav-item dropdown">';
-                    //echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Branches</a>';
-                    //echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-                    //echo '<a class="dropdown-item" href="mgmt_create_branch.php">Create Branch</a>';
-                    //echo '<a class="dropdown-item" href="mgmt_view_branches.php">View Branches</a>';
-                    //echo '</div>';
-                    //echo '</li>';
                     echo '</ul>';
 
                     echo '<ul class="navbar-nav ml-auto">';
@@ -83,25 +76,18 @@
                 case "student":
                     echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
                     echo "<div class='container'>";
-                    echo '<a class="navbar-brand" href="#">eTutor</a>';
+                    echo '<a class="navbar-brand" href="index.php">eTutor</a>';
                     echo '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                     echo '<span class="navbar-toggler-icon"></span>';
                     echo '</button>';
                         
                     echo '<ul class="navbar-nav mr-auto">';		
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="student_dashboard.php">Dashboard</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="#">Blogging</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Material Discussion</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Messaging</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Meeting</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="Document_Title.php">Material Discussion</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="messaging.php">Messaging</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="viewmeeting.php">Meeting</a></li>';
 
-                    //echo '<li class="nav-item dropdown">';
-                    //echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Branches</a>';
-                    //echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-                    //echo '<a class="dropdown-item" href="mgmt_create_branch.php">Create Branch</a>';
-                    //echo '<a class="dropdown-item" href="mgmt_view_branches.php">View Branches</a>';
-                    //echo '</div>';
-                    //echo '</li>';
                     echo '</ul>';
 
                     echo '<ul class="navbar-nav ml-auto">';
@@ -111,10 +97,30 @@
                     echo '</nav>';
                 break;
 
+                case 'admin':
+                    echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
+                    echo "<div class='container'>";
+                    echo '<a class="navbar-brand" href="index.php">eTutor</a>';
+                    echo '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
+                    echo '<span class="navbar-toggler-icon"></span>';
+                    echo '</button>';
+                        
+                    echo '<ul class="navbar-nav mr-auto">';		
+                    echo '<li class="nav-item"><a class="nav-link" href="admin_dashboard.php">Dashboard</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="allocate.php">Allocate</a></li>';
+                    echo '</ul>';
+
+                    echo '<ul class="navbar-nav ml-auto">';
+                    echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
+                    echo '</ul>';
+                    echo "</div>";
+                    echo '</nav>';
+                    break;
+
                 default:
                     echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
                     echo "<div class='container'>";
-                    echo '<a class="navbar-brand" href="#">eTutor</a>';
+                    echo '<a class="navbar-brand" href="index.php">eTutor</a>';
                     echo '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                     echo '<span class="navbar-toggler-icon"></span>';
                     echo '</button>';
