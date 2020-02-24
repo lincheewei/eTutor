@@ -18,6 +18,11 @@
         public static function loadCss($cssFiles = array()){
             if(count($cssFiles) > 0){
                 foreach($cssFiles as $file){
+                    if($file == "fontawesome"){
+                        echo "<link rel='stylesheet' href='assets/fontawesome/css/all.css'>";
+
+                    }
+
                     echo "<link rel='stylesheet' href='assets/css/" . $file . "'>";		
                 }
             }
@@ -26,6 +31,7 @@
         public static function loadJs($jsFiles = array()){
             if(count($jsFiles) > 0){
                 foreach($jsFiles as $file){
+
                     echo "<script src='assets/js/" . $file . "'></script>";
                 }
             }
@@ -59,7 +65,7 @@
                         
                     echo '<ul class="navbar-nav mr-auto">';		
                     echo '<li class="nav-item"><a class="nav-link" href="tutor_dashboard.php">Dashboard</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Blogging</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="blogging.php">Blogging</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="Document_Title.php">Material Discussion</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="messaging.php">Messaging</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="viewmeeting.php">Meeting</a></li>';
@@ -83,7 +89,7 @@
                         
                     echo '<ul class="navbar-nav mr-auto">';		
                     echo '<li class="nav-item"><a class="nav-link" href="student_dashboard.php">Dashboard</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="#">Blogging</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="blogging.php">Blogging</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="Document_Title.php">Material Discussion</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="messaging.php">Messaging</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="viewmeeting.php">Meeting</a></li>';

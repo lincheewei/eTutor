@@ -1,6 +1,7 @@
 {
     "require": {
         "cboden/ratchet": "^0.4.2",
-        "sendgrid/sendgrid": "^7.4"
+        "sendgrid/sendgrid": "^7.4",
+      "ext-mysqli": "*"
     }
 }

@@ -46,7 +46,7 @@
                 }
             } 
         } else {
-            if($_SERVER['PHP_SELF'] !== "/etutor/index.php"){
+            if($_SERVER['PHP_SELF'] !== "/eTutor/index.php"){
                 header("Location: index.php");
             }
         }

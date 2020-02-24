@@ -7,7 +7,7 @@
             try {
                 $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_URL, "http://localhost/etutor/dummyApi.php" ); 
+                curl_setopt($curl, CURLOPT_URL, "http://localhost/eTutor/dummyApi.php" );
                 curl_setopt($curl, CURLOPT_POST, 1 ); 
                 curl_setopt($curl, CURLOPT_POSTFIELDS, array("user" =>json_encode($student), "function" => "getStudentWihtoutTutor")); 
                 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -37,7 +37,7 @@
             try {
                 $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_URL, "http://localhost/etutor/dummyApi.php" ); 
+                curl_setopt($curl, CURLOPT_URL, "http://localhost/eTutor/dummyApi.php" );
                 curl_setopt($curl, CURLOPT_POST, 1 ); 
                 curl_setopt($curl, CURLOPT_POSTFIELDS, array("user" =>json_encode($user), "function" => "getUserName")); 
                 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -67,7 +67,7 @@
             try {
                 $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_URL, "http://localhost/etutor/dummyApi.php" ); 
+                curl_setopt($curl, CURLOPT_URL, "http://localhost/eTutor/dummyApi.php" );
                 curl_setopt($curl, CURLOPT_POST, 1 ); 
                 curl_setopt($curl, CURLOPT_POSTFIELDS, array("student" =>json_encode($student), "function" => "verifyStudent")); 
                 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -97,7 +97,7 @@
             try {
                 $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_URL, "http://localhost/etutor/dummyApi.php" ); 
+                curl_setopt($curl, CURLOPT_URL, "http://localhost/eTutor/dummyApi.php" );
                 curl_setopt($curl, CURLOPT_POST, 1 ); 
                 curl_setopt($curl, CURLOPT_POSTFIELDS, array("tutor" =>json_encode($tutor), "function" => "verifyTutor")); 
                 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -127,7 +127,7 @@
             try {
                 $curl = curl_init();
 
-                curl_setopt($curl, CURLOPT_URL, "http://localhost/etutor/dummyApi.php" ); 
+                curl_setopt($curl, CURLOPT_URL, "http://localhost/eTutor/dummyApi.php" );
                 curl_setopt($curl, CURLOPT_POST, 1 ); 
                 curl_setopt($curl, CURLOPT_POSTFIELDS, array("username" => $username, "password" => $password, "function" => "authenticate")); 
                 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
