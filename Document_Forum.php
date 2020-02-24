@@ -49,6 +49,9 @@
                             echo '<h5 class="card-title">Commented by '.$display_comment_content['Comment_User_Email'].' :';
                             echo '</h5>';
                             echo "<p class='card-text'>" . $display_comment_content['Comment_Content'] . "</p>";
+                            if($display_comment_content['Comment_User_Email'] === getUserEmail()){
+                                echo '<a class="deleteComment btn btn-danger" href="Document_Forum.php?id=' . $_GET['id'] . '&delete='.$display_comment_content["Comment_ID"].'">Delete Comment</a>';
+                            }
                             echo '</div>';
                             echo '</div>';
                         }
@@ -66,7 +69,7 @@
                         <br />
                         <h5>Any comments ? Type it here</h5>
                         <div class="form-group">
-                            <textarea class="form-control" id="InputComment" name="InputComment" style="height: 100px; resize:none"></textarea>
+                            <textarea class="form-control" id="InputComment" name="InputComment" required style="height: 100px; resize:none"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -77,6 +80,22 @@
             </div>
         </main>
         <?php Utility::loadJs(array("jquery-3.4.1.min.js", "bootstrap.min.js", "popper.js")); ?>
+        <script type="text/javascript">
+            $(document).ready(
+                function() {
+                    $(".deleteComment").click(
+                        function() {
+                            if(confirm("Confirm delete this comment? The proccess is irreversible.")){
+                                return true;
+                            } else {
+                                return false;
+                            }                        
+                        }
+                    );
+                }
+            );
+        </script>
         <?php Utility::loadFooter(); ?>
     </body>
 </html>
+
